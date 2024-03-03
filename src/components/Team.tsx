@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import { useState } from "react";
 import { StyleSheet, View } from 'react-native';
 import commonStyles from "../styles/common";
-import { MTeam } from "../models/team/team";
+import MTeam from "../models/team/team";
 import { setCurrentTeam } from "../store/reducers/team";
 import { useAppDispatch } from "../hooks/redux";
 import { useNavigation } from "@react-navigation/native";

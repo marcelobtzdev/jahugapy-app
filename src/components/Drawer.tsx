@@ -6,6 +6,7 @@ import Logout from "../screens/Auth/Logout";
 import Profile from "../screens/User/Profile";
 import AddEditTeam from "../screens/Team/AddEdit";
 import Stat from "../screens/Stat";
+import EventDetail from "../screens/Event/Detail";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const NavigationDrawer = createDrawerNavigator();
@@ -13,7 +14,6 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => (
     <Stack.Navigator
-        initialRouteName="Welcome"
         screenOptions={{
             headerTintColor: '#fff',
             headerTitleAlign: 'center',
@@ -22,6 +22,19 @@ const StackNavigator = () => (
     >
         <Stack.Screen name="TeamList" component={TeamList} options={{ title: 'MIS EQUIPOS' }}/>
         <Stack.Screen name="AddEditTeam" component={AddEditTeam} options={{ title: 'AGREGAR EQUIPO' }}/>
+    </Stack.Navigator>
+);
+
+const EventsStackNavigator = () => (
+    <Stack.Navigator
+        screenOptions={{
+            headerTintColor: '#fff',
+            headerTitleAlign: 'center',
+            headerShown: false
+        }}
+    >
+        <Stack.Screen name="Events" component={Home} options={{ title: 'EVENTOS' }}/>
+        <Stack.Screen name="EventDetail" component={EventDetail} options={{ title: 'DETALLE EVENTO' }}/>
     </Stack.Navigator>
 );
 
@@ -43,9 +56,9 @@ const Drawer = () => {
                 drawerInactiveBackgroundColor: '#ed0f34'
             }}
         >
-            <NavigationDrawer.Screen name="Home" component={Home} options={{ title: 'EVENTOS' }}/>
+            <NavigationDrawer.Screen name="Home" component={EventsStackNavigator} options={{ title: 'EVENTOS' }}/>
             <NavigationDrawer.Screen name="Profile" component={Profile} options={{ title: 'MI CUENTA' }}/>
-            <NavigationDrawer.Screen name="MIS EQUIPOS" component={StackNavigator}/>
+            <NavigationDrawer.Screen name="Teams" component={StackNavigator} options={{ title: 'MIS EQUIPOS' }}/>
             <NavigationDrawer.Screen name="MIS ESTADISTICAS" component={Stat}/>
             <NavigationDrawer.Screen name="Logout" component={Logout} options={{ title: 'SALIR', headerShown: false }}/>
         </NavigationDrawer.Navigator>

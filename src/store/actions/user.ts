@@ -7,6 +7,7 @@ import { RootState } from '..';
 import IUserValidation from '../../interfaces/user/validation';
 import * as Device from 'expo-device';
 import ILogin from '../../interfaces/login';
+import { Platform } from "react-native";
 
 interface IAuthResponse {
     user: IUser
@@ -24,7 +25,7 @@ export const loginAction = createAsyncThunk(
             const body = {
                 username: username,
                 password,
-                device_name: Device.deviceName
+                device_name: Platform.OS === 'web' ? 'web' : Device.deviceName
             };
 
             const {data: userResponse}: AxiosResponse<IAuthResponse> = await axios.post('/login', body);

@@ -1,19 +1,43 @@
-import { View, Image } from "react-native";
-import { Text } from "react-native-paper";
+import { View } from "react-native";
 import commonStyles from "../styles/common";
-import { Card } from "react-native-paper";
-import Button from "../components/Button";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { useCallback, useEffect } from "react";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { getEventsAction } from "../store/actions/event";
+import { displayErrors } from "../utils/common";
+import Event from "../components/Event";
 
 const Home = () => {
+    const navigation = useNavigation();
+    const dispatch = useAppDispatch();
+    const { events } = useAppSelector(state => state.event);
+
+    useEffect(() => {
+        getEvents();
+    }, []);
+
+    useFocusEffect(
+        useCallback(() => {
+            getEvents();
+        }, [])
+    );
+
+    const getEvents = async (): Promise<void> => {
+        try {
+            await dispatch(getEventsAction()).then(unwrapResult);
+        } catch (error) {
+            displayErrors(error);
+          
+            console.log('GET EVENTS ERROR', error)
+        };
+    };
+
     return (
         <View style={commonStyles.container}>
-            <Card style={commonStyles.card}>
-                <Card.Content style={[{ gap: 10 }]}>
-                    <Image source={require('../../assets/liga-flyer.png')} resizeMode="cover" style={{ width: 'auto', height: 300 }}/>
-                    <Text style={commonStyles.textBold}>LIGA WARZONE (Próximamente)</Text>
-                    <Button disabled>INSCRIBIRSE</Button>
-                </Card.Content>
-            </Card>
+            {events.map(event => (
+                <Event event={event} key={event.id}/>
+            ))}
         </View>
     );
 };

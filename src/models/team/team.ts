@@ -1,7 +1,7 @@
 import ITeam from "../../interfaces/team/team";
 import MTeamMember from "./member";
 
-export class MTeam {
+export default class MTeam {
     public id: number;
     public name: string;
     public mode_id: number;

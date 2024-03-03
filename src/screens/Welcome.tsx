@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
         gap: 10
     },
     img: {
-        width: 250
+        width: 250,
+        height: 300
     }
 });
 

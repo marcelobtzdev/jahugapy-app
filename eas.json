@@ -10,7 +10,15 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "channel": "production",
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_BASE_URL": "http://api.jahugaparaguay.com/api"
+      }
+    }
   },
   "submit": {
     "production": {}

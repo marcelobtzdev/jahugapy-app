@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { MTeam } from '../../models/team/team';
+import MTeam from '../../models/team/team';
 import { deleteTeamAction, getTeamsAction } from '../actions/team';
 
 interface ITeamState {
