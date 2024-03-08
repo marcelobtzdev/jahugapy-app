@@ -5,5 +5,5 @@ export default interface IEventTeam {
     event_id: number
     team_id: number
     active: boolean
-    team?: ITeam
+    team: ITeam
 };

@@ -13,10 +13,11 @@ import Toast from "react-native-toast-message";
 import { displayErrors } from "../utils/common";
 
 interface IProps {
-    team: MTeam
+    team: MTeam,
+    readonly?: boolean
 };
 
-const Team = ({ team }: IProps) => {
+const Team = ({ team, readonly = false }: IProps) => {
     const dispatch = useAppDispatch();
     const navigation = useNavigation();
     const [expanded, setExpanded] = useState(true);
@@ -54,17 +55,19 @@ const Team = ({ team }: IProps) => {
                         titleStyle={styles.listText}
                     >
                         {team.members.map(member => (
-                            <List.Item title={member.user.activisionId} titleStyle={styles.listText} key={member.id}/>
+                            <List.Item title={member.user.activisionId} titleStyle={styles.listItemText} key={member.id}/>
                         ))}
                     </List.Accordion>
-                    <View style={styles.actionsContainer}>
-                        <View style={styles.action}>
-                            <Button mode="elevated" onPress={() => handleDeleteTeam(team.id)}>Eliminar</Button>
+                    {!readonly &&
+                        <View style={styles.actionsContainer}>
+                            <View style={styles.action}>
+                                <Button mode="elevated" onPress={() => handleDeleteTeam(team.id)}>Eliminar</Button>
+                            </View>
+                            <View style={styles.action}>
+                                <Button onPress={() => handleEditTeam(team)} disabled>Editar</Button>
+                            </View>
                         </View>
-                        <View style={styles.action}>
-                            <Button onPress={() => handleEditTeam(team)} disabled>Editar</Button>
-                        </View>
-                    </View>
+                    }
                 </Card.Content>
             </Card>
         </View>
@@ -86,6 +89,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     listText: {
+        color: '#111',
+        fontFamily: 'Montserrat-SemiBold',
+        textTransform: 'uppercase'
+    },
+    listItemText: {
         color: '#666',
         fontFamily: 'Montserrat-SemiBold'
     }

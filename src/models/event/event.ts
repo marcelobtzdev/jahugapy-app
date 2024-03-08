@@ -7,7 +7,7 @@ export default class MEvent {
     public description: string;
     public image: string;
     public status: boolean;
-    public teams: MEventTeam[];
+    public eventTeams: MEventTeam[];
 
     constructor(event: IEvent) {
         this.id = event.id;
@@ -15,6 +15,6 @@ export default class MEvent {
         this.description = event.description;
         this.image = event.image;
         this.status = event.status;
-        this.teams = event.event_teams.map(eventTeam => new MEventTeam(eventTeam));
+        this.eventTeams = event.event_teams.map(eventTeam => new MEventTeam(eventTeam));
     }
 }
