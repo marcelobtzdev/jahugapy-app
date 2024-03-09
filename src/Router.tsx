@@ -4,17 +4,40 @@ import Welcome from "./screens/Welcome";
 import Login from "./screens/Auth/Login";
 import Register from "./screens/Auth/Register";
 import Validation from "./screens/Auth/Validation";
+import PrivacyPolicy from "./screens/PrivacyPolicy";
 import Drawer from "./components/Drawer";
 import { useAppSelector } from "./hooks/redux";
 import { StyleSheet } from 'react-native';
+import * as Linking from 'expo-linking';
+
+const prefix = Linking.createURL('/');
 
 const Stack = createStackNavigator();
 
 const Router = () => {
   const { user } = useAppSelector((state) => state.user);
+
+  const linking = {
+    prefixes: [prefix],
+    config: {
+      screens: {
+        Welcome: 'bienvenida',
+        Register: 'registro',
+        Validation: 'validacion',
+        Login: 'ingresar',
+        Home: 'inicio',
+        Events: 'eventos',
+        EventDetail: 'detalle',
+        Profile: 'perfil',
+        TeamList: 'equipos',
+        Stats: 'estadisticas',
+        PrivacyPolicy: 'politica-de-privacidad',
+      },
+    },
+  };
   
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       {!user && (
         <Stack.Navigator
           initialRouteName="Welcome"
@@ -42,6 +65,10 @@ const Router = () => {
           <Stack.Screen
             name="Login"
             component={Login}
+          />
+          <Stack.Screen
+            name="PrivacyPolicy"
+            component={PrivacyPolicy}
           />
         </Stack.Navigator>
       )}

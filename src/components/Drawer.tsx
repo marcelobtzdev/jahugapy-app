@@ -59,7 +59,7 @@ const Drawer = () => {
             <NavigationDrawer.Screen name="Home" component={EventsStackNavigator} options={{ title: 'EVENTOS' }}/>
             <NavigationDrawer.Screen name="Profile" component={Profile} options={{ title: 'MI CUENTA' }}/>
             <NavigationDrawer.Screen name="Teams" component={StackNavigator} options={{ title: 'MIS EQUIPOS' }}/>
-            <NavigationDrawer.Screen name="MIS ESTADISTICAS" component={Stat}/>
+            <NavigationDrawer.Screen name="Stats" component={Stat} options={{ title: 'MIS ESTADISTICAS' }}/>
             <NavigationDrawer.Screen name="Logout" component={Logout} options={{ title: 'SALIR', headerShown: false }}/>
         </NavigationDrawer.Navigator>
         );

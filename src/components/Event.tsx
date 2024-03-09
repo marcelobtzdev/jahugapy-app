@@ -16,16 +16,16 @@ const Event = ({ event }: IProps) => {
     const dispatch = useAppDispatch();
     
     const handleGotToDetail = () => {
-        dispatch(setCurrentEvent(event));
-        navigation.navigate('EventDetail');
-    }; 
+        // dispatch(setCurrentEvent(event));
+        navigation.navigate('EventDetail', { id: event.id });
+    };
 
     return (
         <Card style={commonStyles.card}>
             <Card.Content style={[{ gap: 10 }]}>
                 <Image source={{ uri: event.image }} resizeMode="cover" style={{ width: 'auto', height: 300 }}/>
                 <Text style={commonStyles.textBold}>{event.name}</Text>
-                <Button onPress={handleGotToDetail}>INSCRIBIRSE</Button>
+                <Button onPress={handleGotToDetail}>VER EVENTO</Button>
             </Card.Content>
         </Card>
     )
