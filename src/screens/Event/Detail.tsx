@@ -13,6 +13,7 @@ import { displayErrors } from "../../utils/common";
 import Toast from "react-native-toast-message";
 import Team from "../../components/Team";
 import EventDate from "./components/EventDate";
+import useTeam from "../../hooks/team";
 
 const EventDetail = () => {
     const navigation = useNavigation();
@@ -24,12 +25,14 @@ const EventDetail = () => {
         selectedList: []
     });
     const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+    const { getTeams } = useTeam();
 
     useEffect(() => {
         checkIfAlreadyRegistered();
     }, []);
 
-    const checkIfAlreadyRegistered = () => {
+    const checkIfAlreadyRegistered = async () => {
+        await getTeams();
         const currentEventTeams = currentEvent?.eventTeams;
         
         currentEventTeams?.map(eventTeam => {
