@@ -6,7 +6,7 @@ import { useCallback, useEffect } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { getEventsAction } from "../store/actions/event";
 import { displayErrors } from "../utils/common";
-import Event from "../components/Event";
+import Event from "./Event/components/Event";
 
 const Home = () => {
     const navigation = useNavigation();

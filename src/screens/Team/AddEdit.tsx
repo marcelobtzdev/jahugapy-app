@@ -149,7 +149,7 @@ const AddEditTeam = () => {
                     </View>
                 </View>
                 <View style={{ gap: 5 }}>
-                    <Button onPress={handleSubmit(onSubmit)} loading={loading}>{currentTeam ? 'ACTUALIZAR' : 'AGREGAR'}</Button>
+                    <Button onPress={handleSubmit(onSubmit)} loading={loading} disabled>{currentTeam ? 'ACTUALIZAR' : 'AGREGAR'}</Button>
                     <Button onPress={() => navigation.navigate('TeamList')} mode="elevated">SALIR</Button>
                 </View>
             </View>

@@ -1,11 +1,11 @@
 import { Card, Text } from "react-native-paper";
-import MEvent from "../models/event/event";
-import commonStyles from "../styles/common";
+import MEvent from "../../../models/event/event";
+import commonStyles from "../../../styles/common";
 import { Image } from "react-native";
-import Button from "./Button";
+import Button from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
-import { useAppDispatch } from "../hooks/redux";
-import { setCurrentEvent } from "../store/reducers/event";
+import { useAppDispatch } from "../../../hooks/redux";
+import { setCurrentEvent } from "../../../store/reducers/event";
 
 interface IProps {
     event: MEvent
@@ -16,8 +16,8 @@ const Event = ({ event }: IProps) => {
     const dispatch = useAppDispatch();
     
     const handleGotToDetail = () => {
-        // dispatch(setCurrentEvent(event));
-        navigation.navigate('EventDetail', { id: event.id });
+        dispatch(setCurrentEvent(event));
+        navigation.navigate('EventDetail');
     };
 
     return (

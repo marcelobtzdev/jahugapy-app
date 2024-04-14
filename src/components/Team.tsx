@@ -61,7 +61,7 @@ const Team = ({ team, readonly = false }: IProps) => {
                     {!readonly &&
                         <View style={styles.actionsContainer}>
                             <View style={styles.action}>
-                                <Button mode="elevated" onPress={() => handleDeleteTeam(team.id)}>Eliminar</Button>
+                                <Button mode="elevated" onPress={() => handleDeleteTeam(team.id)} disabled>Eliminar</Button>
                             </View>
                             <View style={styles.action}>
                                 <Button onPress={() => handleEditTeam(team)} disabled>Editar</Button>

@@ -7,6 +7,7 @@ import Profile from "../screens/User/Profile";
 import AddEditTeam from "../screens/Team/AddEdit";
 import Stat from "../screens/Stat";
 import EventDetail from "../screens/Event/Detail";
+import AddEditEventScore from "../screens/Event/Score/AddEditScore";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const NavigationDrawer = createDrawerNavigator();
@@ -35,6 +36,7 @@ const EventsStackNavigator = () => (
     >
         <Stack.Screen name="Events" component={Home} options={{ title: 'EVENTOS' }}/>
         <Stack.Screen name="EventDetail" component={EventDetail} options={{ title: 'DETALLE EVENTO' }}/>
+        <Stack.Screen name="AddEditEventScore" component={AddEditEventScore} options={{ title: 'REPORTE' }}/>
     </Stack.Navigator>
 );
 
